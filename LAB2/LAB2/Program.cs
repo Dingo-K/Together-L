@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace LAB2
         static void Main(string[] args)
         {
             //second();
-            Console.WriteLine(getresult());
+            Check();
 
         }
         static void First_a()
@@ -173,7 +174,19 @@ namespace LAB2
             return a ;
         }
         
+       static void Check()
+        {
+            int a = int.MaxValue;
+            a = a + 1;
+            Console.WriteLine(a);
+            a = int.MaxValue;
+            checked
+            {
+                a = a + 1;
+                Console.WriteLine(a);
+            }
 
+        }
         
 
     }
