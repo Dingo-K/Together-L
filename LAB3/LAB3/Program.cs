@@ -9,14 +9,14 @@ namespace LAB3
 {
     class Car
     {
-        public static int count=0;
-        public int ID { get; set; }
-        private string CarsName;
-        private string Model;
-        private int Year;
-        private string Color;
-        private int Cost;
-        private string Number;
+        
+        public int ID;
+        public string CarsName;
+        public string Model;
+        public int Year;
+        public string Color;
+        public int Cost;
+        public string Number;
 
         public int YearOfCar
         {
@@ -29,31 +29,35 @@ namespace LAB3
 
         public Car()
         {
+            ID = 164228;
             CarsName = "Honda";
             Model = "Accord";
             Year = 2009;
             Color = "Black";
             Cost = 9000;
             Number = "2205 AK-7";
-            count++;
-            Print();
+            
+            
             
         } 
 
         public Car( string CarsName, string Model, int Year, string Color, int Cost,ref string Number)
         {
+            
             this.CarsName = CarsName;
             this.Model = Model;
             this.Year = Year;
             this.Color = Color;
             this.Cost = Cost;
             this.Number = Number;
-            count++;
-            Print();
+            
+            
         }
+      
          
         public void Print()
         {
+            
             Console.WriteLine("CarsName: "+CarsName);
             Console.WriteLine("Model: "+Model);
             if (Year > 0 || Year < 2020)
@@ -74,7 +78,7 @@ namespace LAB3
                 Console.WriteLine("Ошибка");
             }
             Console.WriteLine("Number: " + Number);
-            Console.WriteLine("Count: " + count);
+           
         }
                 
             
@@ -87,13 +91,71 @@ namespace LAB3
         {
             Console.WriteLine("Years of car: "+(2020 - year));
         }
+
+       
         static void Main(string[] args)
         {
-            int year;
-            Car honda = new Car();
+          
+        //------------------------------------------------------- 
+        int year,count=0;
+            string nb = "2010";
+            Car honda = new Car("bmw","M5",2015,"Black",80000,ref nb);
+            honda.Print();
+            count++;
+            Console.WriteLine("count: " + count);
             year = honda.YearOfCar;
             PrintYear(year);
-            
+            Car first = new Car();
+            Car second = new Car();
+            Car third = new Car();
+            Car[] arr = new Car[] {first,second,third };
+            Console.Write("ID ");
+            Console.WriteLine(honda.GetHashCode());
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("CarsName: " );
+                arr[i].CarsName = Console.ReadLine();
+                Console.Write("Model: ");
+                arr[i].Model = Console.ReadLine();
+                Console.Write("Year: ");
+                arr[i].Year = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Color: ");
+                arr[i].Color = Console.ReadLine();
+                Console.Write("Cost: ");
+                arr[i].Cost = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Number: ");
+                arr[i].Number = Console.ReadLine();
+                Console.WriteLine("-----------------------------------------------------");
+                arr[i].Print();
+                Console.Write("ID ");
+                Console.WriteLine(arr[i].GetHashCode());
+                count++;
+                Console.WriteLine("count: " + count);
+                Console.WriteLine("-----------------------------------------------------");
+
+
+
+
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("---------------------------");
+                Console.WriteLine(arr[i].CarsName);
+
+                if(2020-arr[i].Year>5)
+                {
+                    Console.WriteLine(arr[i].Model);
+                }
+
+                Console.WriteLine("---------------------------");
+
+
+
+
+            }
+
+
         }
     }
 }
